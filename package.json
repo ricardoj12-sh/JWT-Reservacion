@@ -1,0 +1,24 @@
+{
+  "name": "reservations-api",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "load:test": "artillery run scripts/load-test.yml",
+    "stress:test": "artillery run scripts/stress-test.yml"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.1.0",
+    "nodemon": "^3.0.0",
+    "artillery": "^2.0.0"
+  }
+}

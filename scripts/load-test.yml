@@ -1,0 +1,29 @@
+config:
+  target: "http://localhost:5000"
+  phases:
+    - duration: 30         # Duración total: 30 segundos
+      arrivalRate: 10      # 10 usuarios por segundo
+  payload:
+    path: "users.csv"
+    fields:
+      - email
+      - password
+scenarios:
+  - name: Prueba de creación de reserva
+    flow:
+      - post:
+          url: "/auth/login"
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+          capture:
+            - json: "$.token"
+              as: token
+
+      - post:
+          url: "/reservations"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          json:
+            date: "2030-01-01"
+            time: "12:00"
